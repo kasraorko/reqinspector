@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Request Investigator</title>
+</head>
+
+<body>
+    {{if .Method}}Request Method: {{.Method}}{{end}}
+    <br>
+    {{if .URL}}
+    Path: {{.URL.Path}} <br>
+    {{end}}
+    {{if .RequestURI}} RequestURI: {{.RequestURI}}
+    {{end}} <br>
+    {{if .Host}} Host:
+    {{.Host}}
+    {{end}} <br>
+    {{if .RemoteAddr}} RemoteAddr: {{.RemoteAddr}}
+    {{end}} <br>
+    {{if .Header}}
+    {{range $k, $v := .Header}}
+    {{$k}}:
+    {{range $v}}
+    {{.}} <br>
+    {{end}}
+    {{end}}
+    {{end}}
+
+    {{if .ResponseHdears}}
+    Response Headers:
+    {{range $k, $v := .ResponseHdears}}
+    {{$k}}:
+    {{range $v}}
+    {{.}} <br>
+    {{end}}
+    {{end}}
+    {{end}}
+</body>
+
+</html>
