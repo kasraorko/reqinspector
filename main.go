@@ -48,7 +48,10 @@ func requestInspector(w http.ResponseWriter, req *http.Request) {
 			log.Fatalln(err)
 		}
 	} else {
-		tpl.ExecuteTemplate(w, "index.html", data)
+		err := tpl.ExecuteTemplate(w, "index.html", data)
+		if err != nil {
+			log.Fatalln(err)
+		}
 	}
 
 }
